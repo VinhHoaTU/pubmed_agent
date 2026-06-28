@@ -1,0 +1,10 @@
+# Système (Mac)
+.DS_Store
+
+# Environnement virtuel Python
+.venv/
+venv/
+__pycache__/
+
+# Sécurité (Fichiers de variables d'environnement)
+.env

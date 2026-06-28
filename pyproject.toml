@@ -15,7 +15,7 @@ dependencies = [
     "langchain-openai>=0.3.9",
     "langgraph>=0.3.18",
     "langgraph-checkpoint-sqlite>=2.0.6",
-    "langsmith>=0.3.18",
+    "langsmith[claude-agent-sdk,openai-agents]>=0.3.18",
     "lxml>=5.3.1",
     "openai>=1.68.2",
     "openai-agents>=0.0.15",
@@ -36,7 +36,10 @@ dependencies = [
     "langchain",
     "datasets>=2.0.0",
     "langchain-qdrant",
-    "qdrant-client"
+    "qdrant-client",
+    "langchain_huggingface",
+    "sentence-transformers",
+    "langchain-qdrant",
 ]
 
 [dependency-groups]
