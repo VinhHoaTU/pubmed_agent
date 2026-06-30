@@ -6,7 +6,6 @@ import json
 llm = ChatOpenAI(model="gpt-4o-mini", temperature=0)
 
 
-
 def generator_agent(state: State) -> dict:
     context = "\n".join(state["retrieved_docs"])
     feedback = state.get("feedback")
@@ -22,7 +21,6 @@ Question : {state['query']}
         prompt += f"\nFeedback à intégrer dans cette nouvelle tentative :\n{feedback}"
 
     response = llm.invoke([HumanMessage(content=prompt)])
-
 
     return {
         "rag_response": response.content,

@@ -6,7 +6,10 @@ from qdrant_client import QdrantClient
 from qdrant_client.models import VectorParams, Distance, PointStruct
 from dotenv import load_dotenv
 from pathlib import Path
-from langchain_text_splitters import RecursiveCharacterTextSplitter, CharacterTextSplitter
+from langchain_text_splitters import (
+    RecursiveCharacterTextSplitter,
+    CharacterTextSplitter,
+)
 from langchain_openai import OpenAIEmbeddings
 from langchain_community.document_loaders import TextLoader
 from langchain_core.documents import Document
@@ -25,7 +28,6 @@ load_dotenv(override=True)
 # #  FULL dataset pour la production
 # # Concatène les "article" des 3 splits en une seule liste
 # # Convertir chaque Column en list avant de concaténer
-
 
 
 # --- 1. Charger les données ---

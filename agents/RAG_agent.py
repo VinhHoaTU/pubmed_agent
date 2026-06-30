@@ -8,7 +8,9 @@ import os
 from dotenv import load_dotenv
 from langchain_classic.retrievers.document_compressors import CrossEncoderReranker
 from langchain_community.cross_encoders import HuggingFaceCrossEncoder
-from langchain_classic.retrievers.contextual_compression import ContextualCompressionRetriever
+from langchain_classic.retrievers.contextual_compression import (
+    ContextualCompressionRetriever,
+)
 
 load_dotenv(override=True)
 
@@ -29,18 +31,19 @@ vectorstore = QdrantVectorStore.from_existing_collection(
 
 
 base_retriever = vectorstore.as_retriever(
-    search_type="similarity",   # ou "mmr", "similarity_score_threshold"
-    search_kwargs={"k": 20},     # nombre de chunks à retourner
+    search_type="similarity",  # ou "mmr", "similarity_score_threshold"
+    search_kwargs={"k": 20},  # nombre de chunks à retourner
 )
 
-# ── Step 2 : Cross-encoder reranker 
-reranker_model =  HuggingFaceCrossEncoder(model_name="BAAI/bge-reranker-base")
-compressor =  CrossEncoderReranker(model=reranker_model, top_n=RERANKER_TOP_K)
+# ── Step 2 : Cross-encoder reranker
+reranker_model = HuggingFaceCrossEncoder(model_name="BAAI/bge-reranker-base")
+compressor = CrossEncoderReranker(model=reranker_model, top_n=RERANKER_TOP_K)
 
 compression_retriever = ContextualCompressionRetriever(
     base_compressor=compressor,
     base_retriever=base_retriever,
 )
+
 
 def rag_agent(state: State) -> dict:
     """
@@ -56,4 +59,3 @@ def rag_agent(state: State) -> dict:
     retrieved_texts = [doc.page_content for doc in docs]
 
     return {"retrieved_docs": retrieved_texts}
-

@@ -17,22 +17,21 @@
 # from state import State
 
 
-# # async 
+# # async
 # def retrival():
 #     graph = build_graph()
 #     initial_input = {"question": "What is the impact of nutrition on school children?"}
 #     config = {"configurable": {"thread_id": "session_1"}}
-    
+
 #     # Now 'await' is inside an 'async def', so it is allowed!
 #         # await / ainvoke
 #     result = graph.invoke(initial_input, config=config)
 #     # print(result["retrival"])
 
 
-
 # def main():
 #     retrival()
-#     print(State["retrival"]) 
+#     print(State["retrival"])
 
 
 # if __name__ == "__main__":
